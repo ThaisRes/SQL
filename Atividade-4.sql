@@ -1,22 +1,4 @@
-/*
- 1. Crie as tabelas:
-* Produtos  - preço, IDfornecedor, valor, nome
-* Fornecedores - nome
-* Vendas - data, IDproduto, IDusuario, nome
-* Usuários - nome
-
-2. Insira alguns dados para cada tabela, pelo menos 5 dados em cada tabela.
-
-3. Crie as seguintes consultas:
-a) Listar todos os dados de todos os produtos;
-b) Listar produtos de um determinado fornecedor;
-c) Listar produtos entre uma intervalo de preços;
-d) Listar o nome do produto e o nome do fornecedor de cada produto;
-e) Listar o nome do usuário, o nome do produto e a data que esse usuário  comprou o produto;
-f) Listar o nome do usuário  e as datas em que ele comprou algo e filtrar por um usuário específico;
-g) Listar o nome dos usuários que não tiveram nenhuma compra;
-h) Listar o identificador e as datas das vendas que não tiveram um usuário;
- */
+DROP TABLE fornecedores, products, usuarios, vendas;
 
 CREATE TABLE fornecedores (
 	id_fornecedor serial PRIMARY KEY, 
@@ -89,7 +71,7 @@ SELECT * FROM vendas
 SELECT nome_produto, nome_fornecedor 
 FROM products p 
 INNER JOIN fornecedores f ON p.fk_fornecedor = f.id_fornecedor 
-WHERE f.nome_fornecedor = 'Fornecedor Delta'
+WHERE f.nome_fornecedor = 'Fornecedor Dell'
 ;
 
 --c) Listar produtos entre uma intervalo de preços;
@@ -113,7 +95,7 @@ INNER JOIN products p ON p.id_produto = v.fk_produto
 --f) Listar o nome do usuário  e as datas em que ele comprou algo e filtrar por um usuário específico;
 SELECT nome_usuario, data_venda FROM usuarios u 
 INNER JOIN vendas v ON u.id_usuario = v.fk_usuario
-WHERE nome_usuario = 'Bruno Costa'
+WHERE nome_usuario = 'Anderson Costa'
 ;
 
 --g) Listar o nome dos usuários que não tiveram nenhuma compra;
